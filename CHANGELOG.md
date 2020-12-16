@@ -1,6 +1,16 @@
 # Changelog
 
 ## Draft
+
+## 5.0.0 (12-14-2020)
+- Parse HTML entities in jsContext. [#1917](https://github.com/bigcommerce/cornerstone/pull/1917)
+- Product images squashed in Category view in AMP. [#1921](https://github.com/bigcommerce/cornerstone/pull/1921)
+- Fixed misaligned tooltip for required product option. [#1915](https://github.com/bigcommerce/cornerstone/pull/1915)
+- Fixed tooltip overlaying by facebook button. [#1914](https://github.com/bigcommerce/cornerstone/pull/1914)
+- Cornerstone - Text hover color does not change when Dropdown menu display mode is set to 'Alternative'. [#1918](https://github.com/bigcommerce/cornerstone/pull/1918)
+- “Sort by” dropdown selection not reflected on search results page for News and Information tab. [#1910](https://github.com/bigcommerce/cornerstone/pull/1910)
+- Header content placed out of the header block on mobile. [#1908](https://github.com/bigcommerce/cornerstone/pull/1908)
+- Fixed an issue with dispaying options that are out of stock for product on Cart. [#1911](https://github.com/bigcommerce/cornerstone/pull/1911)
 - Selecting product options doesn't update image on PDP in Internet Explorer. [#1913](https://github.com/bigcommerce/cornerstone/pull/1913)
 - HTML Entity displayed as is via system/error message on a Storefront. [#1888](https://github.com/bigcommerce/cornerstone/pull/1888)
 - Shoppers are not anchor-linked to reviews on PDPs if product description tabs are enabled. [#1883](https://github.com/bigcommerce/cornerstone/pull/1883)
@@ -16,6 +26,7 @@
 - Move Tax Field under Grand Total on Cart when Tax inclusive. [#1903](https://github.com/bigcommerce/cornerstone/pull/1903)
 - Added styling config for the PayPal SPB on checkout page [#1866](https://github.com/bigcommerce/cornerstone/pull/1866)
 - Moved zoomSize and productSize to the upper level, cause product.js is not availabe on the Quick View [#1884](https://github.com/bigcommerce/cornerstone/pull/1884)
+- Added new region on the cart page [#1901](https://github.com/bigcommerce/cornerstone/pull/1901)
 
 ## 4.12.1 (11-10-2020)
 - Write a Review modal cause TypeError. [#1899](https://github.com/bigcommerce/cornerstone/pull/1899)
