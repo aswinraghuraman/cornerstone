@@ -1,0 +1,72 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{inject 'productId' product.id}}
+
+{{#partial "page"}}
+
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{#each product.shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+<h2>This is the customised bulk products page</h2>
+
+<button id='activateBulkForm' class='button button--primary' style='display:block; margin: 0 auto;'>Purchase in bulk</button>
+
+    <div itemscope itemtype="http://schema.org/Product">
+
+            <div id='standardTemplate'>
+                {{> components/products/product-view schema=true  }}
+            </div>
+            <div id='bulk-variant-form' style="display:none"></div>
+
+        {{{region name="product_below_content"}}}
+
+        {{#if product.videos.list.length}}
+            {{> components/products/videos product.videos}}
+        {{/if}}
+
+        {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/all}}
+
+        {{> components/products/tabs}}
+    </div>
+{{/partial}}
+{{> layout/base}}
+
+<script>
+const productID = {productID: `{{product.id}}`};
+alert('productID'+productID);
+window.initBulkVariantForm(productID);
+const btn = document.getElementById('activateBulkForm');
+const standardForm = document.getElementById('standardTemplate');
+const bulkForm = document.getElementById('bulk-variant-form');
+btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleForm(standardForm, bulkForm, btn);
+})
+function toggleForm(standard, bulk, toggle) {
+    if (bulk.style.display == 'none') {
+        standard.style.display = 'none';
+        bulk.style.display = 'block';
+        toggle.textContent = 'Purchase individually';
+        return;
+    }
+    if (bulk.style.display == 'block') {
+        standard.style.display = 'block';
+        bulk.style.display = 'none';
+        toggle.textContent = 'Purchase in bulk';
+        return;
+    }
+}
+</script>

@@ -1,6 +1,9 @@
 __webpack_public_path__ = window.__webpack_public_path__; // eslint-disable-line
 
 import Global from './theme/global';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import BulkVariantForm from './bulk-variant-form/bulk-variant-form';
 
 const getAccount = () => import('./theme/account');
 const getLogin = () => import('./theme/auth');
@@ -52,7 +55,10 @@ const pageClasses = {
     wishlists: () => import('./theme/wishlist'),
 };
 
-const customClasses = {};
+const customClasses = {
+'pages/custom/category/react-demo': () => import('./theme/custom/react-demo'),
+'pages/custom/product/bulk-variant-form': () => import('./bulk-variant-form/bulk-variant-form')
+};
 
 /**
  * This function gets added to the global window and then called
@@ -95,4 +101,11 @@ window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null
             });
         },
     };
+};
+
+window.initBulkVariantForm = function initBulkVariantForm(id) {
+    ReactDOM.render(
+        React.createElement(BulkVariantForm, id, null),
+        document.getElementById('bulk-variant-form')
+    );
 };

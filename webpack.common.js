@@ -16,6 +16,34 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css/,
+                loader:[ 'style-loader', 'css-loader' ]
+            },
+            {
+                test: /\.jsx$/,
+                include: /(assets\/js|assets\\js|stencil-utils)/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        plugins: [
+                            '@babel/plugin-syntax-dynamic-import', // add support for dynamic imports (used in app.js)
+                            'lodash', // Tree-shake lodash
+                        ],
+                        presets: [
+                            ['@babel/preset-env', {
+                                loose: true, // Enable "loose" transformations for any plugins in this preset that allow them
+                                modules: false, // Don't transform modules; needed for tree-shaking
+                                useBuiltIns: 'usage',
+                                corejs: '^3.6.5',
+                                targets: '> 1%, last 2 versions, Firefox ESR',
+                            }],
+                            ['@babel/preset-react'],
+                        ],
+                    },
+                },
+            },
+            {
                 test: /\.js$/,
                 include: /(assets\/js|assets\\js|stencil-utils)/,
                 use: {
@@ -29,9 +57,11 @@ module.exports = {
                             ['@babel/preset-env', {
                                 loose: true, // Enable "loose" transformations for any plugins in this preset that allow them
                                 modules: false, // Don't transform modules; needed for tree-shaking
-                                useBuiltIns: 'entry',
+                                useBuiltIns: 'usage',
                                 corejs: '^3.6.5',
+                                targets: '> 1%, last 2 versions, Firefox ESR',
                             }],
+                            ['@babel/preset-react'],
                         ],
                     },
                 },
@@ -81,5 +111,6 @@ module.exports = {
             'svg-injector': path.resolve(__dirname, 'node_modules/svg-injector/dist/svg-injector.min.js'),
             sweetalert2: path.resolve(__dirname, 'node_modules/sweetalert2/dist/sweetalert2.min.js'),
         },
+        extensions: [".js", ".jsx"]
     },
 };

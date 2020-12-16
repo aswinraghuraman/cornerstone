@@ -1,0 +1,55 @@
+.bulk-variant-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.bulk-variant-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bulk-variant-col > p {
+    margin: 0;
+}
+
+.bulk-variant-col > img {
+    max-width: 80px;
+}
+
+.bulk-form-field {
+    display: grid;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.bulk-button-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 8px;
+    padding: 16px 0;
+}
+
+.qtyField {
+    max-width: 64px;
+    text-align: center;
+    display: block;
+}
+
+#bulkAddToCart {
+    grid-column: 5/5;
+    margin: 0;
+    height: 42px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#bulk-messaging {
+    grid-column: 4/5;
+}
